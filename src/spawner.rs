@@ -11,6 +11,7 @@ pub fn spawn_player(ecs: &mut World, pos: Point) {
                 glyph: to_cp437('@'),
             },
             Health { current: 20, max: 20 },
+            FieldOfView::new(8),
         )
     );
 }
@@ -31,7 +32,8 @@ pub fn spawn_enemy(ecs: &mut World, pos: Point) {
             },
             ChasingPlayer{},
             Health { current: hp, max: hp },
-            Name(name)
+            Name(name),
+            FieldOfView::new(6),
         )
     );
 }
