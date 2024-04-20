@@ -39,14 +39,15 @@ impl State {
     fn new() -> Self {
         let mut ecs = World::default();
         let mut resources = Resources::default();
-        let map_builder = MapBuilder::new();
+        let mut rng = RandomNumberGenerator::new();
+        let map_builder = MapBuilder::new(&mut rng);
+        map_builder.monster_spawns
+            .iter()
+            .for_each(|(pos)|
+                spawn_enemy(&mut ecs, &mut rng, *pos)
+            );
         spawn_player(&mut ecs, map_builder.player_start);
         spawn_amulet_of_yala(&mut ecs, map_builder.amulet_start);
-        map_builder.rooms
-            .iter()
-            .skip(1)
-            .map(|r| r.center())
-            .for_each(|room| spawner::spawn_enemy(&mut ecs, room));
         resources.insert(map_builder.map);
         resources.insert(Camera::new(map_builder.player_start));
         resources.insert(TurnState::AwaitingInput);
@@ -84,14 +85,15 @@ impl State {
     fn reset_game_state(&mut self) {
         self.ecs = World::default();
         self.resources = Resources::default();
-        let map_builder = MapBuilder::new();
+        let mut rng = RandomNumberGenerator::new();
+        let map_builder = MapBuilder::new(&mut rng);
         spawn_player(&mut self.ecs, map_builder.player_start);
         spawn_amulet_of_yala(&mut self.ecs, map_builder.amulet_start);
         map_builder.rooms
             .iter()
             .skip(1)
             .map(|r| r.center())
-            .for_each(|room| spawner::spawn_enemy(&mut self.ecs, room));
+            .for_each(|room| spawner::spawn_enemy(&mut self.ecs, &mut rng, room));
         self.resources.insert(map_builder.map);
         self.resources.insert(Camera::new(map_builder.player_start));
         self.resources.insert(TurnState::AwaitingInput);

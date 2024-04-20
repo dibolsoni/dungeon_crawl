@@ -16,9 +16,8 @@ pub fn spawn_player(ecs: &mut World, pos: Point) {
     );
 }
 
-pub fn spawn_enemy(ecs: &mut World, pos: Point) {
-    let mut rand = rand::thread_rng();
-    let (hp, name, glyph) = match rand.gen_range(1..=8) {
+pub fn spawn_enemy(ecs: &mut World, rng: &mut RandomNumberGenerator, pos: Point) {
+    let (hp, name, glyph) = match rng.roll_dice(1, 8) {
         1..=5 => goblin(),
         _ => orc(),
     };
