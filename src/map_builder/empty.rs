@@ -1,3 +1,4 @@
+use crate::map_builder::themes::DungeonTheme;
 use crate::prelude::*;
 use super::MapArchitect;
 
@@ -11,6 +12,7 @@ impl MapArchitect for EmptyArchitect {
             player_start: Point::zero(),
             amulet_start: Point::zero(),
             monster_spawns: Vec::new(),
+            theme: DungeonTheme::new(),
         };
 
         mb.fill(TileType::Floor);

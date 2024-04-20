@@ -1,3 +1,4 @@
+use crate::map_builder::themes::DungeonTheme;
 use crate::prelude::*;
 use super::MapArchitect;
 
@@ -12,6 +13,7 @@ impl MapArchitect for RoomArchitect {
             player_start: Point::zero(),
             amulet_start: Point::zero(),
             monster_spawns: Vec::new(),
+            theme: DungeonTheme::new(),
         };
         mb.fill(TileType::Wall);
         mb.build_random_rooms(rng);
