@@ -6,6 +6,7 @@ const NUM_TILES: usize = (SCREEN_WIDTH * SCREEN_HEIGHT) as usize;
 pub enum TileType {
     Wall,
     Floor,
+    Exit,
 }
 
 pub struct Map {
@@ -35,6 +36,9 @@ impl Map {
                         TileType::Wall => {
                             ctx.set(x - camera.left_x, y - camera.top_y, WHITE, BLACK, to_cp437('#'));
                         }
+                        TileType::Exit => {
+                            ctx.set(x - camera.left_x, y - camera.top_y, YELLOW, BLACK, to_cp437('>'));
+                        }
                     }
                 }
             }
@@ -46,7 +50,11 @@ impl Map {
     }
 
     pub fn can_enter_tile(&self, point: Point) -> bool {
-        self.in_bounds(point) && self.tiles[map_idx(point.x, point.y)] == TileType::Floor
+        self.in_bounds(point) &&
+            (
+                self.tiles[map_idx(point.x, point.y)] == TileType::Exit ||
+                self.tiles[map_idx(point.x, point.y)] == TileType::Floor
+            )
     }
 
     pub fn try_idx(&self, point: Point) -> Option<usize> {
@@ -96,14 +104,13 @@ impl BaseMap for Map {
             Point::new(0, -1),
             Point::new(0, 1),
         ]
-        .iter()
+            .iter()
         {
             if let Some(exit) = self.valid_exit(loc, *delta) {
                 exits.push((exit, 1.0));
             }
         }
         exits
-
     }
 
     fn get_pathing_distance(&self, idx1: usize, idx2: usize) -> f32 {

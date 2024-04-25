@@ -7,6 +7,8 @@ edition = "2021"
 
 [dependencies]
 bracket-lib = "0.8.7"
-legion = "0.4.0"
+legion = "=0.3.1"
 rand = "0.8.5"
 log = "0.4.21"
+serde = "1.0.198"
+ron = "0.8.1"
