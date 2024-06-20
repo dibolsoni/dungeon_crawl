@@ -39,7 +39,7 @@ The hero's hometown is suffering from plague of monster. Welling up from the dee
 
 
 ### Demo Play
-![playing](https://github.com/dibolsoni/dungeon_crawl/assets/17862078/8865bf1d-3afc-409f-ac72-b2d0ca328740)
+https://github.com/dibolsoni/dungeon_crawl/assets/17862078/8865bf1d-3afc-409f-ac72-b2d0ca328740
 
 
 
