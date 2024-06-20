@@ -12,3 +12,7 @@ rand = "0.8.5"
 log = "0.4.21"
 serde = "1.0.198"
 ron = "0.8.1"
+
+
+[profile.release]
+lto = "thin"

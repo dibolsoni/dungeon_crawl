@@ -47,7 +47,6 @@ impl State {
         let mut map_builder = MapBuilder::new(&mut rng);
         spawn_level(&mut ecs, &mut rng, 0, &map_builder.monster_spawns);
         spawn_player(&mut ecs, map_builder.player_start);
-        // spawn_amulet_of_yala(&mut ecs, map_builder.amulet_start);
         let exit_idx = map_builder.map.point2d_to_index(map_builder.amulet_start);
         map_builder.map.tiles[exit_idx] = TileType::Exit;
         resources.insert(map_builder.map);
