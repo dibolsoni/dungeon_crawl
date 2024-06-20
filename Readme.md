@@ -38,4 +38,9 @@ The hero's hometown is suffering from plague of monster. Welling up from the dee
 - [x] Consider keeping score.
 
 
-*content based on book: "Hands-On Rust: Effective Learning through 2D Game Development and Play" by Herbert Wolverson*
+### Demo Play
+![playing](https://github.com/dibolsoni/dungeon_crawl/assets/17862078/8865bf1d-3afc-409f-ac72-b2d0ca328740)
+
+
+
+content based on book: "Hands-On Rust: Effective Learning through 2D Game Development and Play" by Herbert Wolverson*
