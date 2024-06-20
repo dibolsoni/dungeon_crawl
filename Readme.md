@@ -37,5 +37,5 @@ The hero's hometown is suffering from plague of monster. Welling up from the dee
 - [x] Consider some visual effects to make combat more visceral.
 - [x] Consider keeping score.
 
-### Demo Play
-![Demo Play](./resources/demo.mp4)
+
+*content based on book: "Hands-On Rust: Effective Learning through 2D Game Development and Play" by Herbert Wolverson*
